@@ -6,7 +6,7 @@ min_train=min(train1);
 max_train=max(train1);
 min_in=min(input1);
 max_in=max(input1);
-for k=.1:.9
+
     
     for i=1:75
     for j=1:4
@@ -15,8 +15,13 @@ for k=.1:.9
     end
     end
 result=zeros(1,75);
+accmat=zeros(1,10);
+flag=1;
 
 temp=zeros(1,3);
+for k=.1:.1:1
+    count=0;
+
 for i=1:75
     sum=0;
     for j=1:25
@@ -37,6 +42,27 @@ for i=1:75
     [m1,n1]=find(temp(1,:)==b);
     result(i)=n1;
 end
+for i=1:25
+    if (result(i)==1)
+        count=count+1;
+    end
+end
+for i=25:50
+    if (result(i)==2)
+        count=count+1;
+    end
+end
+for i=51:75
+    if (result(i)==3)
+        count=count+1;
+    end
+end
+accuracy=(count/75)*100;
+
+accmat(flag)=accuracy;
+flag=flag+1;
+
+    
 end
     
         
